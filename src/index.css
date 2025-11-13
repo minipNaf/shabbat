@@ -1,3 +1,55 @@
+/*
+ * 1. GLOBAL CSS VARIABLES FOR LIGHT AND DARK MODES
+ * This section defines the color palette, allowing for easy switching between themes
+ * by changing the 'data-theme' attribute on the <html> or <body> tag.
+ */
+
+/* --- Default Theme: Light Mode --- */
+/* These variables apply globally if no 'data-theme' is specified. */
+:root {
+    /* Primary Colors */
+    --color-page-background: #ffffff;
+    --color-text-primary: #000000;
+    --color-header-bg: #f0f0f0;
+    --color-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Dark Mode Configuration --- */
+/* This theme activates when the attribute data-theme="dark" is set on the main HTML element. */
+[data-theme="dark"] {
+    /* Primary Colors for Dark Theme */
+    --color-page-background: #18191a;
+    --color-text-primary: #f0f2f5;
+    --color-header-bg: #333333;
+    --color-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- 2. TAILWIND DIRECTIVES (EXISTING CODE) --- */
+/* These lines must remain to correctly load Tailwind's core styles and utilities. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/*
+ * 3. GLOBAL STYLE APPLICATION
+ * This section ensures that key structural elements (like the body) use the new variables.
+ * Note: Components styled directly by Tailwind should be updated to use the new color variables.
+ */
+body {
+    /* Applies the active background color (light or dark) */
+    background-color: var(--color-page-background);
+    /* Applies the active text color */
+    color: var(--color-text-primary);
+}
+
+/* Example: Applying the header color */
+header {
+    background-color: var(--color-header-bg);
+}
+
+/* Example: Applying shadow */
+.card {
+    box-shadow: var(--color-shadow);
+}
