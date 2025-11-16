@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { CitySearch } from './components/CitySearch';
 import { CityDisplay } from './components/CityDisplay';
 import { ShabbatTimes } from './components/ShabbatTimes';
+import { ThemeToggle } from './components/ThemeToggle';
 import { supabase } from './lib/supabase';
 import { getUserId } from './utils/userId';
 import { City } from './utils/cities';
@@ -68,19 +69,24 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center">
-        <div className="text-gray-600">Loading...</div>
-      </div>
+      <>
+        <ThemeToggle />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-gray-600 dark:text-gray-400">Loading...</div>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl space-y-8">
-        <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-gray-900">Shabbat Times Finder</h1>
-          <p className="text-gray-600">Search for a city to see Shabbat candle lighting times</p>
-        </div>
+    <>
+      <ThemeToggle />
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="w-full max-w-4xl space-y-8">
+          <div className="text-center space-y-2">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">Shabbat Times Finder</h1>
+            <p className="text-gray-600 dark:text-gray-400">Search for a city to see Shabbat candle lighting times</p>
+          </div>
 
         <div className="flex justify-center">
           <CitySearch onSelectCity={handleSelectCity} />
@@ -102,13 +108,14 @@ function App() {
           </div>
         )}
 
-        {!savedCity && (
-          <div className="text-center text-gray-500">
-            <p>No city selected yet. Search and select a city above!</p>
-          </div>
-        )}
+          {!savedCity && (
+            <div className="text-center text-gray-500 dark:text-gray-400">
+              <p>No city selected yet. Search and select a city above!</p>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
