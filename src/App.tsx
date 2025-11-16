@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CitySearch } from './components/CitySearch';
 import { CityDisplay } from './components/CityDisplay';
+import { ShabbatTimes } from './components/ShabbatTimes';
 import { supabase } from './lib/supabase';
 import { getUserId } from './utils/userId';
 import { City } from './utils/cities';
@@ -75,10 +76,10 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl space-y-8">
+      <div className="w-full max-w-4xl space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-gray-900">City Finder</h1>
-          <p className="text-gray-600">Search and save your favorite city</p>
+          <h1 className="text-4xl font-bold text-gray-900">Shabbat Times Finder</h1>
+          <p className="text-gray-600">Search for a city to see Shabbat candle lighting times</p>
         </div>
 
         <div className="flex justify-center">
@@ -86,12 +87,17 @@ function App() {
         </div>
 
         {savedCity && (
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-6 flex-wrap">
             <CityDisplay
               cityName={savedCity.name}
               country={savedCity.country}
               latitude={savedCity.latitude}
               longitude={savedCity.longitude}
+            />
+            <ShabbatTimes
+              latitude={savedCity.latitude}
+              longitude={savedCity.longitude}
+              cityName={savedCity.name}
             />
           </div>
         )}
