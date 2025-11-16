@@ -20,7 +20,7 @@ export function calculateCandleLightingTime(
   sunsetTime: Date,
   offsetMinutes: number = 18
 ): Date {
-  return new Date(sunsetTime.getTime() - offsetMinutes);
+  return new Date(sunsetTime.getTime() - offsetMinutes * 60 * 1000);
 }
 
 export function getNextFriday(referenceDate: Date = new Date()): Date {
