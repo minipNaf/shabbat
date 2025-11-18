@@ -59,6 +59,9 @@ export function ShabbatTimes({ latitude, longitude, cityName }: ShabbatTimesProp
           </span>
         </div>
 
+        {/*----------------------------------
+        -----------Required credit-----------
+        -------------------------------------*/}
         <div className="bg-orange-50 dark:bg-orange-900/30 rounded-xl p-4">
           <div className="flex items-center gap-2 mb-3">
             <Clock className="w-4 h-4 text-orange-600 dark:text-orange-400" />
@@ -68,6 +71,16 @@ export function ShabbatTimes({ latitude, longitude, cityName }: ShabbatTimesProp
           </div>
           <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{formatTime(shabbatTimes.sunset)}</p>
         </div>
+      </div>
+      <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <a
+          href="https://www.hebcal.com/shabbat?geonameid=281184&geoip=geoname&b=40&M=on&lg=s&i=on&utm_source=shabbat1c&utm_medium=js-i2&utm_campaign=s1c-jerusalem"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        >
+          Powered by Hebcal Shabbat Times
+        </a>
       </div>
     </div>
   );
